@@ -30,7 +30,7 @@ while True:
         whattodo = input("")
         x = 0
         thislog = ""
-        for a in Loglist:
+        for a in LogList:
             if len(a) != 0:
                 if a[0] == whattodo:
                     thislog = a[1]
