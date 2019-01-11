@@ -56,8 +56,21 @@ while True:
             if len(a) != 0:
                 if a[0] == whattodo:
                     thislogone = a[1]
-            xa += 1
         if thislogone == "":
             print("Error: Log with name:", filetwo, "not found")
         thislog += thislogone
         LogList[x] = thislog
+    if whattodo == "delete":
+        print("What log would you like to delete?")
+        fileone = input("")
+        x = 0
+        for a in LogList:
+            if len(a) != 0:
+                if a[0] == fileone:
+                    LogList[x] = LogList[x + 1]
+            x += 1
+    if whattodo == "show":
+        print("Name                                        ID")
+        for a in LogList:
+            print(a[0],"                                      ",a[2])
+        
