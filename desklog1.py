@@ -67,10 +67,14 @@ while True:
         for a in LogList:
             if len(a) != 0:
                 if a[0] == fileone:
-                    LogList[x] = LogList[x + 1]
+                    if len(LogList) > 1:
+                        LogList[x] = LogList[x + 1]
+                    else:
+                        LogList[x] = ""
             x += 1
     if whattodo == "show":
         print("Name                                        ID")
         for a in LogList:
-            print(a[0],"                                      ",a[2])
+            if len(a) > 2:
+                print(a[0],"                                   ",a[2])
         
