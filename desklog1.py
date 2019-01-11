@@ -35,6 +35,7 @@ while True:
                 if a[0] == whattodo:
                     thislog = a[1]
                     logprocess(thislog)
+                    break
             x += 1
         if thislog == "":
             print("Error: Log with name:", whattodo, "not found")
@@ -48,10 +49,10 @@ while True:
             if len(a) != 0:
                 if a[0] == whattodo:
                     thislog = a[1]
+            x += 1
         if thislog == "":
             print("Error: Log with name:",fileone,"not found")
         thislogone = ""
-        xa = 0
         for a in LogList:
             if len(a) != 0:
                 if a[0] == whattodo:
