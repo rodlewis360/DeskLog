@@ -20,7 +20,7 @@ def logprocess(log):
 while True:
     print("What would you like to do?")
     whattodo = input("")
-    if whattodo == "new log":
+    if whattodo == "new":
         Log = Logprocessstart()
         logsfilled += 1
         LogList.append(Log)
