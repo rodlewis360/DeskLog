@@ -98,7 +98,5 @@ def DeskLog():
             f.close()
             print("File succesfully saved!")
             break
-    import sys
-    sys.exit()
 
 DeskLog()
