@@ -2,7 +2,7 @@ import os
 LogList = []
 if os.path.isfile("DeskLog.txt") == True:
     f = open("DeskLog.txt", "r")
-    LogList = f
+    LogList = list(f)
     f.close()
 logsfilled = 0
 
