@@ -1,5 +1,9 @@
-Log = []
+import os
 LogList = []
+if os.path.isfile("DeskLog.txt") == True:
+    f = open("DeskLog.txt", "r")
+    LogList = f
+    f.close()
 logsfilled = 0
 
 def Logprocessstart():
@@ -16,15 +20,13 @@ def logprocess(log):
     log += input("")
     return log
 
-def DeskLog(logsfilled):
+def DeskLog():
     while True:
         print("What would you like to do?")
         whattodo = input("")
         if whattodo == "new":
             Log = Logprocessstart()
-            logsfilled += 1
             LogList.append(Log)
-            Log.append(logsfilled)
         if whattodo == "open":
             print("What log would you like to open?")
             whattodo = input("")
@@ -75,7 +77,15 @@ def DeskLog(logsfilled):
                         LogList[x] = ""
                 x += 1
         if whattodo == "show":
-            print("Name                                        ID")
+            print("Name")
             for a in LogList:
-                if len(a) > 2:
-                    print(a[0],"                                   ",a[2])
+                if len(a) > 1:
+                    print(a[0])
+        if whattodo == "save":
+            print("Saving...")
+            if os.path.isfile("DeskLog.txt") == True:
+                os.remove("DeskLog.txt")
+            f2 = open("DeskLog.txt", "w+")
+            f.write(LogList)
+            f.close()
+            print("File succesfully saved!")
