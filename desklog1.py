@@ -98,5 +98,10 @@ def DeskLog():
             f.close()
             print("File succesfully saved!")
             break
+        if whattodo == "cls":
+            a = 0
+            while a < 50:
+                print(" ")
+                a += 1
 
 DeskLog()
