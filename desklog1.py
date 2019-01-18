@@ -85,7 +85,20 @@ def DeskLog():
             print("Saving...")
             if os.path.isfile("DeskLog.txt") == True:
                 os.remove("DeskLog.txt")
-            f2 = open("DeskLog.txt", "w+")
-            f.write(LogList)
+            f = open("DeskLog.txt", "w+")
+            f.write(str(LogList))
             f.close()
             print("File succesfully saved!")
+        if whattodo == "exit":
+            print("Saving...")
+            if os.path.isfile("DeskLog.txt") == True:
+                os.remove("DeskLog.txt")
+            f = open("DeskLog.txt", "w+")
+            f.write(str(LogList))
+            f.close()
+            print("File succesfully saved!")
+            break
+    import sys
+    sys.exit()
+
+DeskLog()
