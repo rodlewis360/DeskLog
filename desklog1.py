@@ -1,11 +1,3 @@
-import os
-LogList = []
-if os.path.isfile("DeskLog.txt") == True:
-    f = open("DeskLog.txt", "r")
-    LogList = list(f)
-    f.close()
-logsfilled = 0
-
 def Logprocessstart():
     log = []
     print("What is the name of your log?")
@@ -16,11 +8,16 @@ def Logprocessstart():
 
 def logprocess(log):
     print(log)
-    print("What would you like to put in your log?")
+    print("What would you like to put in",log,"?")
     log += input("")
     return log
 
 def DeskLog():
+    import os
+    LogList = []
+    if os.path.isfile("DeskLog.txt") == True:
+        f = open("DeskLog.txt", "r")
+        LogList = list(f)
     while True:
         print("What would you like to do?")
         whattodo = input("")
@@ -52,18 +49,22 @@ def DeskLog():
                 if len(a) != 0:
                     if a[0] == whattodo:
                         thislog = a[1]
+                        print(a[1])
+                        print(thislog)
                         break
                 x += 1
             if thislog == "":
                 print("Error: log with name", fileone, "not found.")
             thislogone = ""
             for a in LogList:
-                if len(a) != 0:
+                if len(a) > 1:
                     if a[0] == whattodo:
                         thislogone = a[1]
+                        print(a[1])
+                        print(thislogone)
                         thislog += thislogone
                         if thislog != "":
-                            LogList[x] = [a[0], thislog, a[2]]
+                            LogList[x] = [a[0], thislog]
                         break
             if thislogone == "":
                 print("Error: Log with name",filetwo,"not found.")
@@ -87,7 +88,7 @@ def DeskLog():
                 os.remove("DeskLog.txt")
             f = open("DeskLog.txt", "w+")
             f.write(str(LogList))
-            f.close()
+            os.fsync(f)
             print("File succesfully saved!")
         if whattodo == "exit":
             print("Saving...")
@@ -95,13 +96,25 @@ def DeskLog():
                 os.remove("DeskLog.txt")
             f = open("DeskLog.txt", "w+")
             f.write(str(LogList))
-            f.close()
+            os.fsync(f)
             print("File succesfully saved!")
             break
         if whattodo == "cls":
             a = 0
-            while a < 50:
+            while a <= 50:
                 print(" ")
                 a += 1
+        if whattodo == 'rename':
+            print("What log would you like to rename?")
+            whattodo = input()
+            x = 0
+            for a in Loglist:
+                if len(a) > 1:
+                    if a[0] == whattodo:
+                        print("What would you like to name it?")
+                        whattodo = input()
+                        LogList[x] = [whattodo, a[1]]
+                x += 1
+    f.close()
 
 DeskLog()
