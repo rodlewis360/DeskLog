@@ -14,10 +14,10 @@ def logprocess(log):
 
 def DeskLog():
     import os
-    LogList = []
+    LogList = {}
     if os.path.isfile("DeskLog.txt") == True:
         f = open("DeskLog.txt", "r")
-        LogList = list(f)
+        LogList = dict(f)
     while True:
         print("What would you like to do?")
         whattodo = input("")
