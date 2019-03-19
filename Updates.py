@@ -28,7 +28,6 @@ def DeskLog():
         if whattodo == "open":
             print("What log would you like to open?")
             whattodo = input("")
-            x = 0
             try:
                 print(LogList.get(whattodo))
                 LogList[whattodo] = LogList.get(whattodo) + "  " + input()
@@ -38,34 +37,27 @@ def DeskLog():
             print("What files?(One at a time)")
             fileone = input("")
             filetwo = input("")
-            thislog = ""
-            x = 0
             try:
                 thislog = LogList.get(fileone)
             except NameError:
                 print("Error: log with name", fileone, "not found.")
-            thislogone = ""
-            for a in LogList:
-                if len(a) > 1:
-                    if a[0] == whattodo:
-                        thislogone = a[1]
-                        print(a[1])
-                        print(thislogone)
-                        thislog += thislogone
-                        if thislog != "":
-                            LogList[x] = [a[0], thislog]
-                        break
-            if thislogone == "":
+            try:
+                thislogone = LogList.get(filetwo)
+            except NameError:
                 print("Error: Log with name",filetwo,"not found.")
+            try:
+                LogList[fileone] = LogList.get(fileone) + Logist.get(filetwo)
+            except NameError:
+                a = True
+            if a == True:
+                print("Files succesfully merged!  New name:", fileone, "!")
         if whattodo == "delete":
             print("What log would you like to delete?")
             fileone = input("")
-            x = 0
             try:
                 del LogList[fileone]
             except NameError:
                 print("Error: Log with name", fileone, "not found.)
-                x += 1
         if whattodo == "show":
             print("Name")
             for a in LogList:
